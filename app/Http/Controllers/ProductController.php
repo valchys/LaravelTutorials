@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public static $products = [
         ["id"=>"1", "name"=>"TV", "description"=>"Best TV", "price"=>"$ 100"],
-        ["id"=>"2", "name"=>"iPhone", "description"=>"Best iPhone", "price"=>"$ 100"],
+        ["id"=>"2", "name"=>"iPhone", "description"=>"Best iPhone", "price"=>"$ 150"],
         ["id"=>"3", "name"=>"Chromecast", "description"=>"Best Chromecast", "price"=>"$ 50"],
         ["id"=>"4", "name"=>"Glasses", "description"=>"Best Glasses", "price"=>"$ 90"]
     ];
