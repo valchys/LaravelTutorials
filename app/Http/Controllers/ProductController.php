@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     public function create(): View
     {
-        $viewData = []; 
+        $viewData = [];
         $viewData['title'] = 'Create product';
 
         return view('product.create')->with('viewData', $viewData);
@@ -42,7 +42,7 @@ class ProductController extends Controller
     {
         Product::validate($request);
 
-        $newProduct = new Product();
+        $newProduct = new Product;
         $newProduct->setName($request->input('name'));
         $newProduct->setPrice($request->input('price'));
         $newProduct->save();
