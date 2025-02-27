@@ -9,3 +9,5 @@ Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('p
 Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name('product.create');
 Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name('product.save');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
+Route::get('/image', 'App\Http\Controllers\ImageController@index')->name('image.index');
+Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name('image.save');
