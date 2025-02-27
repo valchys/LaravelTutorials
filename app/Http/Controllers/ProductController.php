@@ -23,8 +23,8 @@ class ProductController extends Controller
     {
         $viewData = [];
         $product = Product::findOrFail($id);
-        $viewData['title'] = $product['name'].' - Online Store';
-        $viewData['subtitle'] = $product['name'].' - Product information';
+        $viewData['title'] = $product->getName().' - Online Store';
+        $viewData['subtitle'] = $product->getName().' - Product information';
         $viewData['product'] = $product;
 
         return view('product.show')->with('viewData', $viewData);
@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     public function create(): View
     {
-        $viewData = []; // to be sent to the view
+        $viewData = []; 
         $viewData['title'] = 'Create product';
 
         return view('product.create')->with('viewData', $viewData);
@@ -40,12 +40,12 @@ class ProductController extends Controller
 
     public function save(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required|gt:0',
-        ]);
+        Product::validate($request);
 
-        Product::create($request->only(['name', 'price']));
+        $newProduct = new Product();
+        $newProduct->setName($request->input('name'));
+        $newProduct->setPrice($request->input('price'));
+        $newProduct->save();
 
         return back();
     }

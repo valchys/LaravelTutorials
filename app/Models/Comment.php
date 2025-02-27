@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
-    use HasFactory;
-
     /**
      * PRODUCT ATTRIBUTES
      * $this->attributes['id'] - int - contains the product primary key (id)
@@ -23,19 +21,14 @@ class Comment extends Model
         return $this->atrributes['id'];
     }
 
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
-
     public function getDescription(): string
     {
         return $this->attributes['description'];
     }
 
-    public function setDescription(string $desc): void
+    public function setDescription(string $description): void
     {
-        $this->attributes['description'] = $desc;
+        $this->attributes['description'] = $description;
     }
 
     public function getProductId(): int
@@ -43,9 +36,9 @@ class Comment extends Model
         return $this->attributes['product_id'];
     }
 
-    public function setProductId(int $pId): void
+    public function setProductId(int $productId): void
     {
-        $this->attributes['product_id'] = $pId;
+        $this->attributes['product_id'] = $productId;
     }
 
     public function product(): BelongsTo

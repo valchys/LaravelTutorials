@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,22 +21,26 @@ class Product extends Model
      */
     protected $fillable = ['name', 'price'];
 
+    public static function validate( $request)
+    {
+        $request->validate([
+            "name" => "required",
+            "price" => "required|numeric|gt:0",
+            ]); 
+
+    }
+
     public function getId(): int
     {
         return $this->attributes['id'];
     }
 
-    public function setId($id): void
-    {
-        $this->attributes['id'] = $id;
-    }
-
     public function getName(): string
     {
-        return $this->attributes['name'];
+        return strtoupper($this->attributes['name']);
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
     }
@@ -45,7 +50,7 @@ class Product extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice($price): void
+    public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
     }
